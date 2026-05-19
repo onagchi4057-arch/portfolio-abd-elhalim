@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Abd Elhalim Bourta — Juriste</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0f1520;
+  --bg2:#161e2e;
+  --bg3:#1e2a3a;
+  --turq:#38b2ac;
+  --turq2:#81e6d9;
+  --turq3:#e6fffa;
+  --white:#f0f4f8;
+  --muted:#8899aa;
+  --border:rgba(56,178,172,0.15);
+  --card:#192130;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--turq);border-radius:4px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 60px;
+  background:rgba(15,21,32,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;
+  color:var(--turq);letter-spacing:1px;
+}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:14px;
+  font-weight:500;letter-spacing:.5px;
+  transition:color .25s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1px;background:var(--turq);
+  transition:width .25s;
+}
+.nav-links a:hover{color:var(--turq);}
+.nav-links a:hover::after{width:100%;}
+
+/* ── HERO ── */
+#home{
+  min-height:100vh;display:flex;align-items:center;
+  padding:100px 60px 60px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 70% 40%,rgba(56,178,172,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:60px 60px;
+  opacity:.4;pointer-events:none;
+}
+.hero-content{max-width:640px;position:relative;z-index:1;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(56,178,172,.1);border:1px solid var(--border);
+  color:var(--turq);font-size:12px;letter-spacing:2px;font-weight:500;
+  padding:6px 16px;border-radius:100px;margin-bottom:28px;
+  animation:fadeUp .6s ease both;
+}
+.hero-tag span{width:6px;height:6px;border-radius:50%;background:var(--turq);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,7vw,80px);font-weight:900;
+  line-height:1.05;letter-spacing:-1px;
+  animation:fadeUp .7s .1s ease both;
+}
+.hero-name em{color:var(--turq);font-style:normal;}
+.hero-sub{
+  font-size:18px;color:var(--muted);margin-top:16px;font-weight:300;
+  animation:fadeUp .7s .2s ease both;
+}
+.hero-desc{
+  margin-top:24px;color:#a0b0c0;font-size:15px;max-width:480px;
+  animation:fadeUp .7s .3s ease both;
+}
+.hero-btns{
+  display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;
+  animation:fadeUp .7s .4s ease both;
+}
+.btn-main{
+  padding:14px 32px;background:var(--turq);color:var(--bg);
+  font-weight:600;font-size:14px;letter-spacing:.5px;
+  border:none;border-radius:6px;cursor:pointer;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(56,178,172,.3);}
+.btn-ghost{
+  padding:14px 32px;background:transparent;
+  color:var(--turq);font-weight:500;font-size:14px;
+  border:1px solid var(--turq);border-radius:6px;cursor:pointer;
+  text-decoration:none;transition:background .2s,color .2s;
+}
+.btn-ghost:hover{background:rgba(56,178,172,.1);}
+.hero-contacts{
+  display:flex;gap:20px;margin-top:32px;flex-wrap:wrap;
+  animation:fadeUp .7s .5s ease both;
+}
+.hero-contacts a{
+  display:flex;align-items:center;gap:8px;
+  color:var(--muted);font-size:13px;text-decoration:none;
+  transition:color .2s;
+}
+.hero-contacts a:hover{color:var(--turq);}
+.hero-contacts a svg{width:16px;height:16px;stroke:currentColor;fill:none;}
+.hero-img{
+  position:absolute;right:60px;top:50%;transform:translateY(-50%);
+  width:340px;height:340px;border-radius:50%;
+  border:2px solid var(--turq);
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(56,178,172,.15);
+  animation:fadeIn .8s .3s ease both;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.hero-ring{
+  position:absolute;right:40px;top:50%;transform:translateY(-50%);
+  width:380px;height:380px;border-radius:50%;
+  border:1px solid rgba(56,178,172,.2);
+  pointer-events:none;animation:rotate 20s linear infinite;
+}
+@keyframes rotate{to{transform:translateY(-50%) rotate(360deg);}}
+
+/* ── SECTIONS COMMON ── */
+section{padding:90px 60px;position:relative;}
+.section-label{
+  font-size:11px;letter-spacing:4px;color:var(--turq);
+  font-weight:600;text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label::before{
+  content:'';width:28px;height:1px;background:var(--turq);
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,4vw,42px);font-weight:700;
+  line-height:1.2;margin-bottom:48px;
+}
+.divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,var(--turq),transparent);
+  margin-bottom:60px;opacity:.3;
+}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-text p{color:#9ab0c0;line-height:1.9;font-size:15px;}
+.about-text p+p{margin-top:16px;}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;
+}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:20px;
+}
+.stat-card .num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:900;color:var(--turq);
+}
+.stat-card .label{font-size:12px;color:var(--muted);margin-top:4px;}
+.about-img-wrap{position:relative;}
+.about-photo{
+  width:100%;aspect-ratio:4/5;border-radius:12px;
+  object-fit:cover;object-position:top;
+  border:1px solid var(--border);
+}
+.about-badge{
+  position:absolute;bottom:-16px;right:-16px;
+  background:var(--turq);color:var(--bg);
+  padding:16px 20px;border-radius:10px;
+  font-size:12px;font-weight:600;line-height:1.4;
+  box-shadow:0 8px 24px rgba(56,178,172,.3);
+}
+
+/* ── FORMATION ── */
+#formation{background:var(--bg);}
+.timeline{position:relative;padding-left:36px;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:1px;background:linear-gradient(180deg,var(--turq),transparent);
+}
+.tl-item{
+  position:relative;margin-bottom:40px;
+  opacity:0;transform:translateX(-20px);
+  transition:all .5s ease;
+}
+.tl-item.visible{opacity:1;transform:translateX(0);}
+.tl-dot{
+  position:absolute;left:-42px;top:4px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--turq);border:2px solid var(--bg);
+  box-shadow:0 0 12px rgba(56,178,172,.5);
+}
+.tl-year{
+  font-size:11px;letter-spacing:2px;color:var(--turq);
+  font-weight:600;margin-bottom:6px;
+}
+.tl-title{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:700;margin-bottom:4px;
+}
+.tl-place{color:var(--muted);font-size:14px;}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--bg2);}
+.exp-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:32px;margin-bottom:20px;
+  transition:border-color .25s,transform .25s;
+}
+.exp-card:hover{border-color:var(--turq);transform:translateY(-3px);}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;}
+.exp-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+.exp-badge{
+  background:rgba(56,178,172,.12);border:1px solid var(--border);
+  color:var(--turq);font-size:12px;font-weight:600;
+  padding:4px 14px;border-radius:100px;white-space:nowrap;
+}
+.exp-org{color:var(--turq);font-size:14px;margin-top:6px;font-weight:500;}
+.exp-desc{color:#8899aa;font-size:14px;margin-top:14px;line-height:1.8;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.tag{
+  background:rgba(56,178,172,.06);border:1px solid rgba(56,178,172,.2);
+  color:var(--turq2);font-size:11px;padding:4px 10px;border-radius:4px;
+}
+
+/* ── COMPETENCES ── */
+#competences{background:var(--bg);}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.skill-group-title{
+  font-size:13px;letter-spacing:2px;color:var(--turq);
+  font-weight:600;text-transform:uppercase;margin-bottom:24px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.skill-item{margin-bottom:18px;}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:8px;}
+.skill-name{font-size:14px;font-weight:500;}
+.skill-level{font-size:12px;color:var(--muted);}
+.skill-bar{height:4px;background:var(--bg3);border-radius:4px;overflow:hidden;}
+.skill-fill{
+  height:100%;background:linear-gradient(90deg,var(--turq),var(--turq2));
+  border-radius:4px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.personal-skills{display:flex;flex-wrap:wrap;gap:10px;}
+.ps-tag{
+  background:var(--card);border:1px solid var(--border);
+  color:#a0b8c8;font-size:13px;padding:8px 16px;border-radius:6px;
+  transition:border-color .2s,color .2s;cursor:default;
+}
+.ps-tag:hover{border-color:var(--turq);color:var(--turq);}
+
+/* ── LANGUES ── */
+#langues{background:var(--bg2);}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.lang-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:24px;text-align:center;
+  transition:border-color .25s,transform .25s;
+}
+.lang-card:hover{border-color:var(--turq);transform:translateY(-4px);}
+.lang-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:12px;}
+.lang-dots{display:flex;gap:6px;justify-content:center;margin-bottom:10px;}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--bg3);transition:background .3s;
+}
+.dot.filled{background:var(--turq);}
+.lang-label{font-size:12px;color:var(--muted);}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:32px;}
+.contact-items{display:flex;flex-direction:column;gap:16px;}
+.contact-item{
+  display:flex;align-items:center;gap:16px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:16px 20px;
+  transition:border-color .2s;
+}
+.contact-item:hover{border-color:var(--turq);}
+.contact-item svg{width:20px;height:20px;stroke:var(--turq);fill:none;flex-shrink:0;}
+.contact-item span{font-size:14px;color:#a0b0c0;}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.contact-form input,
+.contact-form textarea{
+  background:var(--card);border:1px solid var(--border);
+  color:var(--white);font-family:'DM Sans',sans-serif;
+  font-size:14px;padding:14px 18px;border-radius:8px;
+  outline:none;transition:border-color .2s;resize:none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--turq);}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:var(--muted);}
+.contact-form textarea{min-height:140px;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:30px 60px;display:flex;
+  justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+.footer-name{
+  font-family:'Playfair Display',serif;
+  font-size:16px;color:var(--turq);font-weight:700;
+}
+.footer-copy{font-size:12px;color:var(--muted);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{gap:20px;}
+  section{padding:70px 24px;}
+  #home{padding:100px 24px 60px;}
+  .hero-img,.hero-ring{display:none;}
+  .about-grid,.skills-grid,.contact-grid{grid-template-columns:1fr;}
+  footer{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ABB.</div>
+  <ul class="nav-links">
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span></span>
+      Disponible immédiatement
+    </div>
+    <h1 class="hero-name">Abd Elhalim<br><em>Bourta</em></h1>
+    <p class="hero-sub">Juriste en Formation · Master 1 Sciences Juridiques</p>
+    <p class="hero-desc">
+      Passionné par le droit privé, rigoureux et capable d'analyser des dossiers complexes.
+      À la recherche d'opportunités pour mettre en pratique mes compétences juridiques.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-main">Me contacter</a>
+      <a href="#formation" class="btn-ghost">Mon parcours</a>
+      <a href="src/" download="CV_AbdElhalimBourta.pdf" class="btn-ghost" style="display:flex;align-items:center;gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger CV
+      </a>
+    </div>
+    <div class="hero-contacts">
+      <a href="mailto:abdelhalimbourta5@gmail.com">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        abdelhalimbourta5@gmail.com
+      </a>
+      <a href="tel:+21279581464">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.8 19.8 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +212 79581464
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Tinghir, Maroc
+      </a>
+    </div>
+  </div>
+  <div class="hero-ring"></div>
+  <div class="hero-img">
+    <img src="src/" alt="Abd Elhalim Bourta" onerror="this.parentElement.style.background='#1e2a3a';this.style.display='none'">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">À propos</div>
+      <h2 class="section-title">Qui suis-je ?</h2>
+      <p>
+        Juriste en formation, actuellement en <strong style="color:var(--turq)">Master 1 Sciences Juridiques</strong>
+        à l'Université Mohammed V, Agdal-Rabat, après une Licence en Droit Privé en Français
+        obtenue à l'Université Cadi Ayad de Marrakech.
+      </p>
+      <p>
+        Passionné par le droit et doté d'une solide capacité d'analyse, je suis capable de
+        travailler en équipe, de gérer des dossiers complexes et de m'adapter rapidement à
+        tout environnement professionnel exigeant. Mon parcours académique m'a permis de
+        développer des compétences solides en droit privé, civil et des obligations.
+      </p>
+      <p>
+        Également athlète de fond et pratiquant de fitness, je cultive la rigueur, la
+        persévérance et le dépassement de soi — des valeurs que j'applique au quotidien
+        dans mon travail juridique.
+      </p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">M1</div>
+          <div class="label">Sciences Juridiques</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">3</div>
+          <div class="label">Langues maîtrisées</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">4+</div>
+          <div class="label">Compétences clés</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">100%</div>
+          <div class="label">Disponible</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img-wrap reveal">
+      <img src="src/img.png" alt="Abd Elhalim Bourta" class="about-photo"
+           onerror="this.style.background='#1e2a3a';this.style.minHeight='400px'">
+      <div class="about-badge">
+        Juriste<br>en Formation
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section id="formation">
+  <div class="section-label reveal">Parcours académique</div>
+  <h2 class="section-title reveal">Formation</h2>
+  <div class="divider"></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2025 – 2026</div>
+      <div class="tl-title">Master 1 — Sciences Juridiques</div>
+      <div class="tl-place">Université Mohammed V · Agdal-Rabat</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2024 – 2025</div>
+      <div class="tl-title">Licence — Droit Privé en Français</div>
+      <div class="tl-place">Université Cadi Ayad · Marrakech</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2021 – 2022</div>
+      <div class="tl-title">Baccalauréat Sciences Humaines</div>
+      <div class="tl-place">Maroc</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Terrain</div>
+  <h2 class="section-title reveal">Expérience</h2>
+  <div class="divider"></div>
+  <div class="exp-card reveal">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Responsable Comptabilité — Diplôme Fitness</div>
+        <div class="exp-org">Club d'Athlétisme ACRAT</div>
+      </div>
+      <div class="exp-badge">2020 – 2021</div>
+    </div>
+    <p class="exp-desc">
+      Gestion administrative et financière du club sportif. Suivi des adhésions,
+      élaboration des rapports de trésorerie mensuels et organisation logistique
+      des événements sportifs. Coordination avec les membres de l'équipe pour
+      assurer le bon fonctionnement des activités.
+    </p>
+    <div class="exp-tags">
+      <span class="tag">Gestion administrative</span>
+      <span class="tag">Comptabilité</span>
+      <span class="tag">Organisation</span>
+      <span class="tag">Travail en équipe</span>
+    </div>
+  </div>
+  <div class="exp-card reveal">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Athlète de fond</div>
+        <div class="exp-org">Club d'Athlétisme ACRAT</div>
+      </div>
+      <div class="exp-badge">2020</div>
+    </div>
+    <p class="exp-desc">
+      Pratique compétitive de la course de fond. Développement de la rigueur,
+      de la persévérance et de la gestion du stress sous pression — des qualités
+      directement transposables au monde professionnel juridique.
+    </p>
+    <div class="exp-tags">
+      <span class="tag">Athlétisme</span>
+      <span class="tag">Discipline</span>
+      <span class="tag">Persévérance</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCES -->
+<section id="competences">
+  <div class="section-label reveal">Savoir-faire</div>
+  <h2 class="section-title reveal">Compétences</h2>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="reveal">
+      <div class="skill-group-title">Compétences Juridiques</div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Droit privé & civil</span><span class="skill-level">Avancé</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Analyse de dossiers juridiques</span><span class="skill-level">Avancé</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Rédaction d'actes & mémoires</span><span class="skill-level">Intermédiaire</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Recherche & veille juridique</span><span class="skill-level">Avancé</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="82%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Droit des obligations</span><span class="skill-level">Intermédiaire</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="70%"></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">Logiciels & Outils</div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Microsoft Word</span><span class="skill-level">Avancé</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">Microsoft Excel</span><span class="skill-level">Intermédiaire</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="70%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header"><span class="skill-name">PowerPoint</span><span class="skill-level">Avancé</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-w="80%"></div></div>
+      </div>
+      <div style="margin-top:28px;">
+        <div class="skill-group-title">Qualités Personnelles</div>
+        <div class="personal-skills">
+          <span class="ps-tag">Travail en équipe</span>
+          <span class="ps-tag">Rigueur</span>
+          <span class="ps-tag">Analyse & Synthèse</span>
+          <span class="ps-tag">Adaptabilité</span>
+          <span class="ps-tag">Communication</span>
+          <span class="ps-tag">Gestion du stress</span>
+          <span class="ps-tag">Sens des responsabilités</span>
+          <span class="ps-tag">Curiosité intellectuelle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUES -->
+<section id="langues">
+  <div class="section-label reveal">Communication</div>
+  <h2 class="section-title reveal">Langues</h2>
+  <div class="divider"></div>
+  <div class="lang-grid">
+    <div class="lang-card reveal">
+      <div class="lang-name">Arabe</div>
+      <div class="lang-dots">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+      </div>
+      <div class="lang-label">Langue maternelle</div>
+    </div>
+    <div class="lang-card reveal">
+      <div class="lang-name">Amazigh</div>
+      <div class="lang-dots">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+      </div>
+      <div class="lang-label">Langue maternelle</div>
+    </div>
+    <div class="lang-card reveal">
+      <div class="lang-name">Français</div>
+      <div class="lang-dots">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+      </div>
+      <div class="lang-label">Niveau avancé</div>
+    </div>
+    <div class="lang-card reveal">
+      <div class="lang-name">Anglais</div>
+      <div class="lang-dots">
+        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <div class="lang-label">Niveau intermédiaire</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label">Travaillons ensemble</div>
+      <h2 class="section-title">Contact</h2>
+      <p>
+        Je suis disponible immédiatement pour toute opportunité de stage,
+        collaboration ou emploi dans le domaine juridique. N'hésitez pas
+        à me contacter !
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <span>abdelhalimbourta5@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.8 19.8 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+212 79581464</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Tinghir, Maroc</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="contact-form" action="https://formsubmit.co/abdelhalimbourta5@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Votre nom complet" required>
+        <input type="email" name="email" placeholder="Votre adresse e-mail" required>
+        <input type="text" name="subject" placeholder="Objet du message" required>
+        <textarea name="message" placeholder="Votre message..." required></textarea>
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="btn-main" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;">
+          Envoyer le message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Abd Elhalim Bourta</div>
+  <div class="footer-copy">© 2025 · Juriste en Formation · Tinghir, Maroc</div>
+</footer>
+
+<script>
+// Intersection Observer for reveal animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // Animate skill bars inside revealed elements
+      e.target.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.w || '0%';
+      });
+    }
+  });
+}, {threshold: 0.15});
+
+document.querySelectorAll('.reveal, .tl-item').forEach(el => observer.observe(el));
+
+// Also trigger skill bars when their container is visible
+document.querySelectorAll('.skill-fill').forEach(bar => {
+  const container = bar.closest('.reveal');
+  if(!container){
+    // Animate on load if not inside a reveal
+    setTimeout(() => bar.style.width = bar.dataset.w || '0%', 300);
+  }
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#'+current ? 'var(--turq)' : '';
+  });
+});
+</script>
+</body>
+</html>
